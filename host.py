@@ -1,26 +1,32 @@
 from microbit import *
-import radio
-import music
+import radio, music
 
-channel = 1
 radio.on()
+channel = 1
 radio.config(channel=channel)
 tune = ["Eb6"]
-tune1 = ["A5:1"]
-tune2 = ["Gb5:1"]
+# tune1 = ["A5:1"]
+# tune2 = ["Gb5:1"]
+
+doneRadioSend = 'd'
+collectedRadioSend = 'c'
 
 while True:
     if button_a.is_pressed():
         channel = channel + 1
         display.show(channel)
-        music.play(tune)
+        # music.play(tune)
+
         if channel >= 20:
             channel = 1
+
+    # Button B is pressed, it will send a done signal
     if button_b.is_pressed():
-        music.play(tune1)
-        radio.send("Done")
+        # music.play(tune1)
+        radio.send(doneRadioSend)
         display.scroll("Done",50)
+
     if button_b.is_pressed() and button_a.is_pressed():
         music.play(tune2)
-        radio.send("Collected")
+        radio.send(doneRadioReceive)
         display.scroll("Collected",50)
