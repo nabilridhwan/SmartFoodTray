@@ -6,8 +6,8 @@ channel = 1
 radio.config(channel=channel)
 tune = ["Eb6"]
 buttonBCount = 0
-# tune1 = ["A5:1"]
-# tune2 = ["Gb5:1"]
+tune1 = ["A5:1"]
+tune2 = ["Gb5:1"]
 
 (sendDone, sendCollected) = ("Done", "Collected")
 
