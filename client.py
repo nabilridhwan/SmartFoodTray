@@ -20,8 +20,8 @@ if check is doneRadioReceive:
     for i in range(0, 10):
         music.play(alert_tune)
         display.scroll("Done",75)
-
-if check is collectedRadioReceive:
+#if check is collectedRadioReceive:
+else:
     (readingX, readingY) = (accelerometer.get_x(), accelerometer.get_y())
 
     if readingX > threshold:
