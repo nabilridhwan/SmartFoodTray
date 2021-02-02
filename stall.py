@@ -13,12 +13,12 @@ tune2 = ["Gb5:1"]
 
 def sendDoneSignal():
     music.play(tune1)
-    radio.send(sendCollected)
+    radio.send(sendDone)
     display.scroll("Done",50)
 
 def sendCollectedSignal():
     music.play(tune2)
-    radio.send(sendDone)
+    radio.send(sendCollected)
     display.scroll("Collected",50)
 
 while True:
