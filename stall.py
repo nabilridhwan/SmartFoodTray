@@ -22,19 +22,20 @@ def sendCollectedSignal():
     display.scroll("Collected",50)
 
 while True:
-    if button_a.is_pressed():
+    display.show(channel)
+
+    if button_a.was_pressed():
         channel = channel + 1
         display.show(channel)
-        # music.play(tune)
+        music.play(tune)
 
-        if channel >= 20:
+        if channel > 20:
             channel = 1
     # Button B is pressed, it will send a done signal
-    elif button_b.is_pressed():
+    elif button_b.was_pressed():
         buttonBCount = buttonBCount + 1
+        if buttonBCount % 2 != 0:
+            sendDoneSignal()
+        else:
+            sendCollectedSignal()
     
-    if buttonBCount % 2 != 0:
-        sendDoneSignal()
-    else:
-        sendCollectedSignal()
-        
