@@ -21,12 +21,12 @@ while True:
             channel = 1
 
     # Button B is pressed, it will send a done signal
-    if button_b.is_pressed():
+    elif button_b.is_pressed():
         # music.play(tune1)
         radio.send(doneRadioSend)
         display.scroll("Done",50)
 
-    if button_b.is_pressed() and button_a.is_pressed():
+    elif button_b.is_pressed() and button_a.is_pressed():
         music.play(tune2)
         radio.send(doneRadioReceive)
         display.scroll("Collected",50)
