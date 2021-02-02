@@ -9,8 +9,10 @@ alert_tune = ["F#6"]
 
 tiltThreshold = 300
 
+# Threshold
 (receiveDone, receiveCollected) = ("Done", "Collected")
 
+# Stores lasts received radio message
 lastReceived = ""
 
 while True:
@@ -18,23 +20,10 @@ while True:
     incoming = radio.receive()
     
     if incoming == receiveDone:
-        display.clear()
         lastReceived = receiveDone
-    #     music.play(alert_tune)
-    #     display.scroll("Done", delay=75)
-    #     sleep(100)
     elif incoming == receiveCollected:
         lastReceived = receiveCollected
-    #     display.clear()
-    #     display.scroll("Collected",delay=75)
 
-    # itemIsDone = incoming == receiveDone
-        
-    # while itemIsDone:
-        # music.play(alert_tune)
-        # display.scroll("Done", delay=75)
-        # sleep(100)
-    
     if lastReceived == receiveDone:
         music.play(alert_tune)
         display.scroll("Done", delay=75)
