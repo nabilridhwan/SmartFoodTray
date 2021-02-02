@@ -4,8 +4,8 @@
 # Purpose of files
 | Filename        | Purpose     |
 | ------------- |-------------|
-| client.py      | File for the microbit to run on the TRAY |
-| host.py      | File for the microbit to run on the COUNTER      |
+| tray.py      | File for the microbit to run on the TRAY |
+| stall.py      | File for the microbit to run on the STALL/COUNTER      |
 
 # Roles of developers
 | Name        | Roles     |
