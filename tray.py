@@ -15,6 +15,7 @@ tiltThreshold = 300
 # Stores lasts received radio message
 lastReceived = ""
 
+# TODO: Introduce config mode which allows the tray's microbit to set an ID
 while True:
     (readingX, readingY) = (accelerometer.get_x(), accelerometer.get_y())
     incoming = radio.receive()
