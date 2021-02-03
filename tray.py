@@ -6,29 +6,40 @@ tray_id = 1
 radio.on()
 radio.config(channel=tray_id)
 alert_tune = ["F#6"]
+wordDelay = 75
 
-tiltThreshold = 300
+tiltThreshold = 325
 
 # Threshold
-(receiveDone, receiveCollected) = ("Done", "Collected")
+(done, collected) = ("Done", "Collected")
 
 # Stores lasts received radio message
 lastReceived = ""
 
-# TODO: Introduce config mode which allows the tray's microbit to set an ID
 while True:
     (readingX, readingY) = (accelerometer.get_x(), accelerometer.get_y())
     incoming = radio.receive()
     
-    if incoming == receiveDone:
-        lastReceived = receiveDone
-    elif incoming == receiveCollected:
-        lastReceived = receiveCollected
+    if incoming == done:
+        lastReceived = done
+    elif incoming == collected:
+        lastReceived = collected
 
-    if lastReceived == receiveDone:
+    if lastReceived == done:
         music.play(alert_tune)
-        display.scroll("Done", delay=75)
+        display.scroll("Done", delay=wordDelay)
         sleep(100)
+
+    # TODO: Introduce config mode which allows the tray's microbit to set an ID
+    if tray_id > 20 or tray_id < 1:
+        tray_id = 0
+
+    if button_a.is_pressed():
+        tray_id = tray_id + 1
+        display.show(tray_id)
+    elif button_b.is_pressed():
+        tray_id = tray_id - 1
+        display.show(tray_id)
     
     if readingX > tiltThreshold:
         display.show(Image.ARROW_W)

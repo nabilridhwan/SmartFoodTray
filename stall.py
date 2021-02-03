@@ -5,20 +5,19 @@ radio.on()
 channel = 1
 radio.config(channel=channel)
 buttonBCount = 0
-tune1 = ["A5:1"]
-tune2 = ["Gb5:1"]
-
-(sendDone, sendCollected) = ("Done", "Collected")
+(tune, tune1, tune2) = (["Eb6"], ["A5:1"], ["Gb5:1"])
+wordDelay = 75
+(done, collected) = ("Done", "Collected")
 
 def sendDoneSignal():
     music.play(tune1)
-    radio.send(sendDone)
-    display.scroll("Done",50)
+    radio.send(done)
+    display.scroll("Done",wordDelay)
 
 def sendCollectedSignal():
     music.play(tune2)
-    radio.send(sendCollected)
-    display.scroll("Collected",50)
+    radio.send(collected)
+    display.scroll("Collected",wordDelay)
 
 while True:
     display.show(channel)
