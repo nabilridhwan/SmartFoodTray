@@ -2,7 +2,7 @@ from microbit import *
 import radio, music
 
 radio.on()
-channel = 1
+channel = 0
 radio.config(channel=channel)
 buttonBCount = 0
 (tune, tune1, tune2) = (["Eb6"], ["A5:1"], ["Gb5:1"])
@@ -26,8 +26,8 @@ while True:
         channel = channel + 1
         display.show(channel)
         music.play(tune)
-        if channel > 20:
-            channel = 1
+        if channel > 83 or channel < 0:
+            channel = 0
             
     elif button_b.was_pressed():
         buttonBCount = buttonBCount + 1
